@@ -489,11 +489,18 @@ function refuseCookies(){
   document.getElementById("cookie-banner").classList.add("hidden");
 }
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
   const consent = localStorage.getItem("cookieConsent");
-  if(!consent) document.getElementById("cookie-banner").classList.remove("hidden");
-  else if(consent==="accepted") loadAdSense();
+  const banner = document.getElementById("cookie-banner");
+  if(consent === "accepted" || consent === "refused"){
+    banner.classList.add("hidden"); // on cache toujours
+    if(consent === "accepted") loadAdSense(); // on charge seulement si accepté
+  } else {
+    banner.classList.remove("hidden"); // pas encore choisi → on affiche
+  }
 });
+
 </script>
 </body>
 </html>
+
