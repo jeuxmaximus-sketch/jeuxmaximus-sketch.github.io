@@ -480,32 +480,35 @@ function loadAdSense(){
 
 function acceptCookies(){
   localStorage.setItem("cookieConsent","accepted");
-  document.getElementById("cookie-banner").classList.add("hidden");
+  document.getElementById("cookie-banner").style.display = "none";
   loadAdSense();
 }
 
 function refuseCookies(){
   localStorage.setItem("cookieConsent","refused");
-  document.getElementById("cookie-banner").classList.add("hidden");
+  document.getElementById("cookie-banner").style.display = "none";
 }
+
 
 window.addEventListener("load", () => {
   const banner = document.getElementById("cookie-banner");
   const consent = localStorage.getItem("cookieConsent");
 
   if(consent === "accepted"){
-    banner.classList.add("hidden"); // cache la bannière
-    loadAdSense();                  // charge AdSense
+    banner.style.display = "none"; // on cache toujours
+    loadAdSense();                  // on charge AdSense
   } else if(consent === "refused"){
-    banner.classList.add("hidden"); // cache la bannière
+    banner.style.display = "none"; // on cache toujours
   } else {
-    banner.classList.remove("hidden"); // pas encore choisi → affiche
+    banner.style.display = "flex"; // pas encore choisi → affiche
   }
 });
+
 
 
 </script>
 </body>
 </html>
+
 
 
