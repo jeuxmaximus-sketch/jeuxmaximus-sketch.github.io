@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Générateur de Quiz Ultime</title>
+<title>∑urêka:main</title>
 <style>
 :root{
   --bg1:#46178f;
@@ -79,6 +80,36 @@ button:hover{opacity:.9}
   border-radius:6px;
   cursor:pointer;
 }
+.color-row{
+  display:flex;
+  gap:15px;
+  margin-top:10px;
+}
+
+/* Rectangle large */
+.color-rect{
+  width:450px;
+  height:60px;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+/* Supprime le style par défaut (Chrome / Edge / Safari) */
+.color-rect::-webkit-color-swatch-wrapper{
+  padding:0;
+}
+
+.color-rect::-webkit-color-swatch{
+  border:none;
+  border-radius:10px;
+}
+h1{
+font-family:arial;
+font-size:85px;
+}
 </style>
 </head>
 <body>
@@ -99,7 +130,7 @@ button:hover{opacity:.9}
 
   <!-- MENU ACCUEIL -->
   <div id="home">
-    <h1>🎯 Générateur de Quiz Ultime</h1>
+    <h1>∑urêka</h1>
     <button onclick="showCreator()">🧠 Créer / Modifier un quiz</button>
     <button onclick="startQuiz()">▶️ Lancer le quiz</button>
 
@@ -125,13 +156,17 @@ button:hover{opacity:.9}
       <option value="custom">Personnalisé</option>
     </select>
 
-    <div id="customizer" class="hidden">
-      <p>Choisissez vos couleurs :</p>
-      <input type="color" id="color1" value="#000000" onchange="updatePreview()">
-      <input type="color" id="color2" value="#ffffff" onchange="updatePreview()">
-      <div id="preview" style="height:50px;border-radius:8px;margin-top:10px;border:2px solid #fff;"></div>
-      <button onclick="applyCustomGradient()">Appliquer dégradé</button>
-    </div>
+   <div id="customizer" class="hidden">
+  <p>Choisissez vos couleurs :</p>
+
+  <div class="color-row">
+    <input type="color" id="color1" value="#000000" onchange="updatePreview()" class="color-rect">
+    <input type="color" id="color2" value="#ffffff" onchange="updatePreview()" class="color-rect">
+  </div>
+
+  <div id="preview" style="height:50px;border-radius:8px;margin-top:10px;border:2px solid #fff;"></div>
+  <button onclick="applyCustomGradient()">Appliquer dégradé</button>
+</div>
   </div>
 
   <!-- CRÉATEUR -->
@@ -509,8 +544,3 @@ window.addEventListener("load", () => {
 </script>
 </body>
 </html>
-
-
-
-
-
